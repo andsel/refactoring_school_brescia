@@ -29,7 +29,7 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
-            fillQuestions();
+            questionDeck.FillQuestions(this);
         }
 
         public LinkedList<string> PopQuestions
@@ -47,21 +47,11 @@ namespace UglyTrivia
             get { return sportsQuestions; }
         }
 
-        private void fillQuestions()
+        public LinkedList<string> RockQuestions
         {
-            for (int i = 0; i < 50; i++)
-            {
-                PopQuestions.AddLast("Pop Question " + i);
-                ScienceQuestions.AddLast(("Science Question " + i));
-                SportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(createRockQuestion(i));
-            }
+            get { return rockQuestions; }
         }
 
-        public String createRockQuestion(int index)
-        {
-            return "Rock Question " + index;
-        }
 
         public bool isPlayable()
         {
