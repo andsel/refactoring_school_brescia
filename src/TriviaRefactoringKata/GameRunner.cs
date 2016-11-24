@@ -45,8 +45,7 @@ namespace Trivia
 
         protected virtual Random createRandom()
         {
-            Random rand = new Random(10);
-            return rand;
+            return new Random();
         }
     }
 
