@@ -7,7 +7,7 @@ shotgun surgery for questions
 data clumps in add for questions
 
 Spostamento questions in questionDeck
-Game constructor
+ok Game constructor
 askQuestion
 currentCategory
 fields
