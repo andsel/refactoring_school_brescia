@@ -16,10 +16,10 @@ namespace UglyTrivia
 
         bool[] inPenaltyBox = new bool[6];
 
-        LinkedList<string> popQuestions = new LinkedList<string>();
-        LinkedList<string> scienceQuestions = new LinkedList<string>();
-        LinkedList<string> sportsQuestions = new LinkedList<string>();
-        LinkedList<string> rockQuestions = new LinkedList<string>();
+        readonly LinkedList<string> popQuestions = new LinkedList<string>();
+        readonly LinkedList<string> scienceQuestions = new LinkedList<string>();
+        readonly LinkedList<string> sportsQuestions = new LinkedList<string>();
+        readonly LinkedList<string> rockQuestions = new LinkedList<string>();
 
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
@@ -29,18 +29,7 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
-            fillQuestions();
-        }
-
-        private void fillQuestions()
-        {
-            for (int i = 0; i < 50; i++)
-            {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(createRockQuestion(i));
-            }
+            questionDeck.fillQuestions();
         }
 
         public String createRockQuestion(int index)
