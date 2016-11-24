@@ -11,3 +11,4 @@ Game constructor
 askQuestion
 currentCategory
 fields
+inline createRockQuestions

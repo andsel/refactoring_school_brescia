@@ -29,7 +29,33 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
-            questionDeck.fillQuestions();
+            fillQuestions();
+        }
+
+        public LinkedList<string> PopQuestions
+        {
+            get { return popQuestions; }
+        }
+
+        public LinkedList<string> ScienceQuestions
+        {
+            get { return scienceQuestions; }
+        }
+
+        public LinkedList<string> SportsQuestions
+        {
+            get { return sportsQuestions; }
+        }
+
+        private void fillQuestions()
+        {
+            for (int i = 0; i < 50; i++)
+            {
+                PopQuestions.AddLast("Pop Question " + i);
+                ScienceQuestions.AddLast(("Science Question " + i));
+                SportsQuestions.AddLast(("Sports Question " + i));
+                rockQuestions.AddLast(createRockQuestion(i));
+            }
         }
 
         public String createRockQuestion(int index)
@@ -108,18 +134,18 @@ namespace UglyTrivia
         {
             if (currentCategory() == "Pop")
             {
-                Console.WriteLine(popQuestions.First());
-                popQuestions.RemoveFirst();
+                Console.WriteLine(PopQuestions.First());
+                PopQuestions.RemoveFirst();
             }
             if (currentCategory() == "Science")
             {
-                Console.WriteLine(scienceQuestions.First());
-                scienceQuestions.RemoveFirst();
+                Console.WriteLine(ScienceQuestions.First());
+                ScienceQuestions.RemoveFirst();
             }
             if (currentCategory() == "Sports")
             {
-                Console.WriteLine(sportsQuestions.First());
-                sportsQuestions.RemoveFirst();
+                Console.WriteLine(SportsQuestions.First());
+                SportsQuestions.RemoveFirst();
             }
             if (currentCategory() == "Rock")
             {
