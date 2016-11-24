@@ -12,7 +12,7 @@ namespace UglyTrivia
         {
             var stdOut = File.CreateText("output.txt");
             Console.SetOut(stdOut);
-            GameRunner.Main(null);
+            GameRunner.Run(new Random(10));
 
             //Assert.Equal("", stdOut.ToString());
         }
