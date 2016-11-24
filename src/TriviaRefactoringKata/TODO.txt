@@ -7,8 +7,8 @@ shotgun surgery for questions
 data clumps in add for questions
 
 Spostamento questions in questionDeck
-ok Game constructor
+-  Game constructor
 askQuestion
-currentCategory
+- currentCategory
 fields
 inline createRockQuestions
