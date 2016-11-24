@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UglyTrivia;
 
@@ -7,10 +8,18 @@ namespace Trivia
     public class QuestionDeck
     {
         private readonly Game game;
+        private readonly LinkedList<string> popQuestions;
+        private readonly LinkedList<string> scienceQuestions;
+        private readonly LinkedList<string> sportsQuestions;
+        private readonly LinkedList<string> rockQuestions;
 
         public QuestionDeck(Game game)
         {
             this.game = game;
+            popQuestions = game.PopQuestions;
+            scienceQuestions = game.ScienceQuestions;
+            sportsQuestions = game.SportsQuestions;
+            rockQuestions = game.RockQuestions;
         }
 
         public String createRockQuestion(int index)
@@ -22,10 +31,10 @@ namespace Trivia
         {
             for (int i = 0; i < 50; i++)
             {
-                this.game.PopQuestions.AddLast("Pop Question " + i);
-                this.game.ScienceQuestions.AddLast(("Science Question " + i));
-                this.game.SportsQuestions.AddLast(("Sports Question " + i));
-                this.game.RockQuestions.AddLast(this.createRockQuestion(i));
+                popQuestions.AddLast("Pop Question " + i);
+                scienceQuestions.AddLast(("Science Question " + i));
+                sportsQuestions.AddLast(("Sports Question " + i));
+                rockQuestions.AddLast(this.createRockQuestion(i));
             }
         }
 
@@ -47,23 +56,23 @@ namespace Trivia
         {
             if (category == "Pop")
             {
-                Console.WriteLine(game.PopQuestions.First());
-                game.PopQuestions.RemoveFirst();
+                Console.WriteLine(popQuestions.First());
+                popQuestions.RemoveFirst();
             }
             if (category == "Science")
             {
-                Console.WriteLine(game.ScienceQuestions.First());
-                game.ScienceQuestions.RemoveFirst();
+                Console.WriteLine(scienceQuestions.First());
+                scienceQuestions.RemoveFirst();
             }
             if (category == "Sports")
             {
-                Console.WriteLine(game.SportsQuestions.First());
-                game.SportsQuestions.RemoveFirst();
+                Console.WriteLine(sportsQuestions.First());
+                sportsQuestions.RemoveFirst();
             }
             if (category == "Rock")
             {
-                Console.WriteLine(game.RockQuestions.First());
-                game.RockQuestions.RemoveFirst();
+                Console.WriteLine(rockQuestions.First());
+                rockQuestions.RemoveFirst();
             }
         }
     }
