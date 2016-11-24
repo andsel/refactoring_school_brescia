@@ -24,5 +24,16 @@ namespace Trivia
             var category = deck.CurrentCategoryPlace(currentPlayerPlace);
             Assert.Equal(expected, category);
         }
+
+        [Theory]
+        [InlineData(-1, "Rock")]
+        [InlineData(12, "Rock")]
+        [InlineData(1234, "Rock")]
+        public void OutOfBoardTest(int currentPlayerPlace, string expected)
+        {
+            var deck = new QuestionDeck();
+            var category = deck.CurrentCategoryPlace(currentPlayerPlace);
+            Assert.Equal(expected, category);
+        }
     }
 }
