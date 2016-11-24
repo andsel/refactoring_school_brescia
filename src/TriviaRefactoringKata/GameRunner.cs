@@ -14,7 +14,7 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
-            Random rand = new Random(10);
+            Random rand = new Random();
             Run(rand);
         }
 
