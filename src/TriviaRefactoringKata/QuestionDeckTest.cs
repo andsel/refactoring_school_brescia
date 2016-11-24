@@ -47,7 +47,7 @@ namespace Trivia
             Assert.Equal(category + "Question 0", question);
         }
 
-        [Theory]
+        [Fact]
         public void ManyAskQuestionCategoryTest()
         {
             var category = "Rock";
@@ -57,6 +57,14 @@ namespace Trivia
             Assert.Equal(category + "Question 1", deck.AskQuestionCategory(category));
             Assert.Equal(category + "Question 2", deck.AskQuestionCategory(category));
             Assert.Equal(category + "Question 3", deck.AskQuestionCategory(category));
+        }
+
+        [Fact]
+        public void AskQuestionUnknownCategoryTest()
+        {
+            var deck = new QuestionDeck();
+            deck.FillQuestions();
+            Assert.Null(deck.AskQuestionCategory("Unknown"));
         }
     }
 }
