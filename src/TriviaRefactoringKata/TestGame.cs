@@ -33,14 +33,22 @@ namespace UglyTrivia
 
         private void RunGame()
         {
-            using (var stdout = File.CreateText(ACTUAL_FILENAME))
+            var originalOut = Console.Out;
+            try
             {
-                Console.SetOut(stdout);
-                for (int i = 0; i < 1000; i++)
+                using (var stdout = File.CreateText(ACTUAL_FILENAME))
                 {
-                    var seed = 765456 + 42 * i;
-                    GameRunner.Run(new Random(seed));
+                    Console.SetOut(stdout);
+                    for (int i = 0; i < 1000; i++)
+                    {
+                        var seed = 765456 + 42 * i;
+                        GameRunner.Run(new Random(seed));
+                    }
                 }
+            }
+            finally
+            {
+                Console.SetOut(originalOut);
             }
         }
     }

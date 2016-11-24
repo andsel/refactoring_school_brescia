@@ -52,28 +52,37 @@ namespace Trivia
             return "Rock";
         }
 
-        public void AskQuestionCategory(String category)
+        public String AskQuestionCategory(String category)
         {
             if (category == "Pop")
             {
-                Console.WriteLine(popQuestions.First());
+                var question = popQuestions.First();
+                Console.WriteLine(question);
                 popQuestions.RemoveFirst();
+                return question;
             }
             if (category == "Science")
             {
-                Console.WriteLine(scienceQuestions.First());
+                var question = scienceQuestions.First();
+                Console.WriteLine(question);
                 scienceQuestions.RemoveFirst();
+                return question;
             }
             if (category == "Sports")
             {
-                Console.WriteLine(sportsQuestions.First());
+                var question = sportsQuestions.First();
+                Console.WriteLine(question);
                 sportsQuestions.RemoveFirst();
+                return question;
             }
             if (category == "Rock")
             {
-                Console.WriteLine(rockQuestions.First());
+                var question = rockQuestions.First();
+                Console.WriteLine(question);
                 rockQuestions.RemoveFirst();
+                return question;
             }
+            return null;
         }
     }
 }
