@@ -10,11 +10,11 @@ namespace UglyTrivia
         [Fact]
         public void MainTest()
         {
-            var stdOut = new StringWriter();
+            var stdOut = File.CreateText("output.txt");
             Console.SetOut(stdOut);
             GameRunner.Main(null);
 
-            Assert.Equal("", stdOut.ToString());
+            //Assert.Equal("", stdOut.ToString());
         }
     }
 }
