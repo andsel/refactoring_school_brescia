@@ -1,25 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UglyTrivia;
 
 namespace Trivia
 {
     public class QuestionDeck
     {
-        private readonly Game game;
         private readonly LinkedList<string> popQuestions;
         private readonly LinkedList<string> scienceQuestions;
         private readonly LinkedList<string> sportsQuestions;
         private readonly LinkedList<string> rockQuestions;
 
-        public QuestionDeck(Game game)
+        public QuestionDeck()
         {
-            this.game = game;
-            popQuestions = game.PopQuestions;
-            scienceQuestions = game.ScienceQuestions;
-            sportsQuestions = game.SportsQuestions;
-            rockQuestions = game.RockQuestions;
+            popQuestions = new LinkedList<string>();
+            scienceQuestions = new LinkedList<string>();
+            sportsQuestions = new LinkedList<string>();
+            rockQuestions = new LinkedList<string>();
         }
 
         public String createRockQuestion(int index)

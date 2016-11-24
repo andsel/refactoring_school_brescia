@@ -6,10 +6,12 @@ switch statement in currentCategory
 shotgun surgery for questions
 data clumps in add for questions
 
+
+
 Spostamento questions in questionDeck
 -  Game constructor
 - askQuestion
 - currentCategory
-fields
+- fields
 inline createRockQuestions
 AskQuestionCategory change by place (feature envy askQuestion con currentCategory)
