@@ -19,7 +19,7 @@ namespace Trivia
             rockQuestions = new LinkedList<string>();
         }
 
-        public String createRockQuestion(int index)
+        private String createRockQuestion(int index)
         {
             return "Rock Question " + index;
         }

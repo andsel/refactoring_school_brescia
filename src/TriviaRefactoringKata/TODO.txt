@@ -1,5 +1,5 @@
 # Smells
-primitive obsession for questions
+- primitive obsession for questions
 switch statement in askQuestion
 duplicated logic in askQuestion
 switch statement in currentCategory
