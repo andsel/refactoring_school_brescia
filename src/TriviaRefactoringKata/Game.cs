@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Trivia;
 
 namespace UglyTrivia
 {
     public class Game
     {
-
 
         List<string> players = new List<string>();
 
@@ -24,8 +24,11 @@ namespace UglyTrivia
         int currentPlayer = 0;
         bool isGettingOutOfPenaltyBox;
 
+        private readonly QuestionDeck questionDeck;
+
         public Game()
         {
+            questionDeck = new QuestionDeck();
             for (int i = 0; i < 50; i++)
             {
                 popQuestions.AddLast("Pop Question " + i);

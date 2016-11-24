@@ -1,0 +1,7 @@
+# Smells
+primitive obsession for questions
+switch statement in askQuestion
+duplicated logic in askQuestion
+switch statement in currentCategory
+shotgun surgery for questions
+data clumps in add for questions
