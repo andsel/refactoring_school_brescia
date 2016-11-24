@@ -66,6 +66,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionDeck.cs" />
     <Compile Include="TestGame.cs" />
   </ItemGroup>
   <ItemGroup>

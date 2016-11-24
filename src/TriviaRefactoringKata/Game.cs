@@ -29,6 +29,11 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
+            fillQuestions();
+        }
+
+        private void fillQuestions()
+        {
             for (int i = 0; i < 50; i++)
             {
                 popQuestions.AddLast("Pop Question " + i);
