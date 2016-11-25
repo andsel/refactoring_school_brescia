@@ -7,14 +7,14 @@ namespace Trivia
     public class Category
     {
         private readonly LinkedList<String> questions;
-        private String name;
-        private readonly int[] places;
+        private readonly  String name;
+        private readonly List<int> categoryPlaces;
 
-        public Category(string name, int[] places)
+        public Category(string name)
         {
             this.name = name;
-            this.places = places;
             this.questions = new LinkedList<String>();
+            categoryPlaces = new List<int>();
         }
 
         public String Name { get; private set; }
@@ -24,16 +24,23 @@ namespace Trivia
             this.questions.AddLast(question);
         }
 
-        public bool Contains(int playerPlace)
+        public bool InOnPlace(int playerPlace)
         {
-            return places.Contains(playerPlace);
+            return categoryPlaces.Contains(playerPlace);
         }
 
         public String NextQuestion()
         {
+            if (questions.Count == 0)
+                throw new InvalidOperationException("out of questions");
             var result = questions.First();
             questions.RemoveFirst();
             return result;
+        }
+
+        public void PlaceOn(int[] places)
+        {
+            categoryPlaces.AddRange(places);
         }
     }
 }

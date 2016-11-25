@@ -12,11 +12,7 @@ namespace Trivia
 
         public QuestionDeck()
         {
-            Category pop = new Category("Pop", new[] { 0, 4, 6 });
-            Category science = new Category("Science", new[] { 1, 5, 9 });
-            Category sports = new Category("Sports", new[] { 2, 6, 10 });
-            Category rock = new Category("Rock", new[] { 3, 7, 11 });
-            categories = new List<Category> {pop, science, sports, rock};
+            categories = new List<Category>();
         }
 
         String CreateQuestion(String category, int index)
@@ -26,18 +22,48 @@ namespace Trivia
 
         public void FillQuestions()
         {
+            Category pop = new Category("Pop");
+            pop.PlaceOn(new[] { 0, 4, 6 });
+            categories.Add(pop);
+
+            Category science = new Category("Science");
+            science.PlaceOn(new[] { 1, 5, 9 });
+            categories.Add(science);
+
+            Category sports = new Category("Sports");
+            sports.PlaceOn(new[] { 2, 6, 10 });
+            categories.Add(sports);
+
+            Category rock = new Category("Rock");
+            rock.PlaceOn(new[] { 3, 7, 11 });
+            categories.Add(rock);
+
             for (int i = 0; i < 50; i++)
             {
-                foreach (var catergory in categories)
+                foreach (var category in categories)
                 {
-                    catergory.AddQuestion(CreateQuestion(catergory.Name, i));
+                    category.AddQuestion(CreateQuestion(category.Name, i));
                 }
             }
         }
 
+        public void PlaceOn(String categoryName, int[] place)
+        {
+            var cat = new Category(categoryName);
+            cat.PlaceOn(place);
+            categories.Add(cat);
+        }
+
+        public void AddQuestion(String categoryName, String question)
+        {
+            var cat = new Category(categoryName);
+            cat.AddQuestion(question);
+            categories.Add(cat);
+        }
+
         public String CategoryForPlace(int playerPlace)
         {
-            var found = categories.SingleOrDefault(x => x.Contains(playerPlace));
+            var found = categories.SingleOrDefault(x => x.InOnPlace(playerPlace));
             if (found == null)
                 throw new InvalidOperationException("out of board");
             return found.Name;

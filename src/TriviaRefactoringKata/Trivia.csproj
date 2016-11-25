@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
+    <Compile Include="CategoryTests.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
