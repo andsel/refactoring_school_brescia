@@ -13,6 +13,5 @@ Spostamento questions in questionDeck
 - askQuestion
 - currentCategory
 - fields
-inline createRockQuestions
 AskQuestionCategory change by place (feature envy askQuestion con currentCategory)
 Remove Console.WriteLine in AskQuestionCategory

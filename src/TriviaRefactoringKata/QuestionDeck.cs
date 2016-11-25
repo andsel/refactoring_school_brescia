@@ -19,19 +19,19 @@ namespace Trivia
             rockQuestions = new LinkedList<string>();
         }
 
-        private String createRockQuestion(int index)
+        String CreateQuestion(String category, int index)
         {
-            return "Rock Question " + index;
+            return category + " Question " + index;
         }
 
         public void FillQuestions()
         {
             for (int i = 0; i < 50; i++)
             {
-                popQuestions.AddLast("Pop Question " + i);
-                scienceQuestions.AddLast(("Science Question " + i));
-                sportsQuestions.AddLast(("Sports Question " + i));
-                rockQuestions.AddLast(this.createRockQuestion(i));
+                popQuestions.AddLast(CreateQuestion("Pop", i));
+                scienceQuestions.AddLast(CreateQuestion("Science", i));
+                sportsQuestions.AddLast(CreateQuestion("Sports", i));
+                rockQuestions.AddLast(CreateQuestion("Rock", i));
             }
         }
 
