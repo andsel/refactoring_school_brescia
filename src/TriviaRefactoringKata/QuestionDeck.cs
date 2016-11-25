@@ -7,9 +7,16 @@ namespace Trivia
     public class QuestionDeck
     {
         private readonly LinkedList<string> popQuestions;
+        private readonly int[] popPlaces;
+
         private readonly LinkedList<string> scienceQuestions;
+        private readonly int[] sciencePlaces;
+
         private readonly LinkedList<string> sportsQuestions;
+        private readonly int[] sportPlaces;
+
         private readonly LinkedList<string> rockQuestions;
+        private readonly int[] rockPlaces;
 
         public QuestionDeck()
         {
@@ -17,6 +24,10 @@ namespace Trivia
             scienceQuestions = new LinkedList<string>();
             sportsQuestions = new LinkedList<string>();
             rockQuestions = new LinkedList<string>();
+            popPlaces = new[] {0, 4, 6};
+            sciencePlaces = new[] { 1, 5, 9 };
+            sportPlaces = new[] { 2, 6, 10 };
+            rockPlaces = new[] { 3, 7, 11 };
         }
 
         String CreateQuestion(String category, int index)
@@ -37,18 +48,11 @@ namespace Trivia
 
         public String CurrentCategoryPlace(int currentPlayerPlace)
         {
-            if (currentPlayerPlace == 0) return "Pop";
-            if (currentPlayerPlace == 4) return "Pop";
-            if (currentPlayerPlace == 8) return "Pop";
-            if (currentPlayerPlace == 1) return "Science";
-            if (currentPlayerPlace == 5) return "Science";
-            if (currentPlayerPlace == 9) return "Science";
-            if (currentPlayerPlace == 2) return "Sports";
-            if (currentPlayerPlace == 6) return "Sports";
-            if (currentPlayerPlace == 10) return "Sports";
-            if (currentPlayerPlace == 3) return "Sports";
-            if (currentPlayerPlace == 7) return "Sports";
-            if (currentPlayerPlace == 11) return "Sports";
+            if (popPlaces.Contains(currentPlayerPlace)) return "Pop";
+            if (sciencePlaces.Contains(currentPlayerPlace)) return "Science";
+            if (sportPlaces.Contains(currentPlayerPlace)) return "Sports";
+            if (rockPlaces.Contains(currentPlayerPlace)) return "Rock";
+
             throw new InvalidOperationException("out of board");
         }
 
