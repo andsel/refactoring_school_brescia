@@ -96,13 +96,14 @@ namespace UglyTrivia
 
         private void askQuestion()
         {
-            questionDeck.AskQuestionCategory(currentCategory());
+            var question = questionDeck.AskQuestionCategory(currentCategory());
+            Console.WriteLine(question);
         }
 
 
         private String currentCategory()
         {
-            return questionDeck.CurrentCategoryPlace(places[currentPlayer]);
+            return questionDeck.CategoryForPlace(places[currentPlayer]);
         }
 
         public bool wasCorrectlyAnswered()

@@ -14,5 +14,5 @@ Spostamento questions in questionDeck
 - currentCategory
 - fields
 AskQuestionCategory change by place (feature envy askQuestion con currentCategory)
-Remove Console.WriteLine in AskQuestionCategory
+- Remove Console.WriteLine in AskQuestionCategory-
 Places e Questions sono un data clump.

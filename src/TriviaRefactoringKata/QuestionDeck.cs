@@ -46,47 +46,34 @@ namespace Trivia
             }
         }
 
-        public String CurrentCategoryPlace(int currentPlayerPlace)
+        public String CategoryForPlace(int playerPlace)
         {
-            if (popPlaces.Contains(currentPlayerPlace)) return "Pop";
-            if (sciencePlaces.Contains(currentPlayerPlace)) return "Science";
-            if (sportPlaces.Contains(currentPlayerPlace)) return "Sports";
-            if (rockPlaces.Contains(currentPlayerPlace)) return "Rock";
+            if (popPlaces.Contains(playerPlace)) return "Pop";
+            if (sciencePlaces.Contains(playerPlace)) return "Science";
+            if (sportPlaces.Contains(playerPlace)) return "Sports";
+            if (rockPlaces.Contains(playerPlace)) return "Rock";
 
             throw new InvalidOperationException("out of board");
         }
 
         public String AskQuestionCategory(String category)
         {
-            if (category == "Pop")
-            {
-                var question = popQuestions.First();
-                Console.WriteLine(question);
-                popQuestions.RemoveFirst();
-                return question;
-            }
-            if (category == "Science")
-            {
-                var question = scienceQuestions.First();
-                Console.WriteLine(question);
-                scienceQuestions.RemoveFirst();
-                return question;
-            }
-            if (category == "Sports")
-            {
-                var question = sportsQuestions.First();
-                Console.WriteLine(question);
-                sportsQuestions.RemoveFirst();
-                return question;
-            }
-            if (category == "Rock")
-            {
-                var question = rockQuestions.First();
-                Console.WriteLine(question);
-                rockQuestions.RemoveFirst();
-                return question;
-            }
-            throw new InvalidOperationException($"Missing category {category}");
+            LinkedList<String> categoryQuestions = null;
+            if (category == "Pop") categoryQuestions = popQuestions;
+            if (category == "Science") categoryQuestions = scienceQuestions;
+            if (category == "Sports") categoryQuestions = sportsQuestions;
+            if (category == "Rock") categoryQuestions = rockQuestions;
+            if (categoryQuestions == null)
+                throw new InvalidOperationException($"Missing category {category}");
+            
+            return NextQuestion(categoryQuestions);
+        }
+
+        private string NextQuestion(LinkedList<string> questions)
+        {
+            var result = questions.First();
+            questions.RemoveFirst();
+            return result;
         }
     }
 }

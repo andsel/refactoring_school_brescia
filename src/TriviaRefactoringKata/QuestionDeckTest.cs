@@ -22,7 +22,7 @@ namespace Trivia
         public void CurrentCategoryPlaceTest(int currentPlayerPlace, String expected)
         {
             var deck = new QuestionDeck();
-            var category = deck.CurrentCategoryPlace(currentPlayerPlace);
+            var category = deck.CategoryForPlace(currentPlayerPlace);
             Assert.Equal(expected, category);
         }
 
@@ -33,7 +33,7 @@ namespace Trivia
         public void OutOfBoardTest(int place)
         {
             var deck = new QuestionDeck();
-            var ex = Record.Exception(() => deck.CurrentCategoryPlace(place));
+            var ex = Record.Exception(() => deck.CategoryForPlace(place));
             Assert.IsType<InvalidOperationException>(ex);
             Assert.Contains("out of board", ex.Message, StringComparison.InvariantCultureIgnoreCase);
         }
