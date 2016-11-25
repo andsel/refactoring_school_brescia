@@ -12,8 +12,8 @@ namespace Trivia
             var deck = new QuestionDeck();
             deck.FillQuestions();
             deck.PlaceOn("Foo", new int[] {0, 1});
-            Assert.Equal("Foo", deck.CategoryForPlace(0)));
-            Assert.Equal("Foo", deck.CategoryForPlace(1)));
+            Assert.Equal("Foo", deck.CategoryForPlace(0));
+            Assert.Equal("Foo", deck.CategoryForPlace(1));
         }
 
         [Fact]
@@ -62,18 +62,9 @@ namespace Trivia
         }
 
         [Fact]
-        public void AskQuestionUnknownCategoryTest_test()
-        {
-            var deck = new QuestionDeck();
-            deck.FillQuestions();
-            Assert.Null(deck.AskQuestionCategory("Unknown"));
-        }
-
-        [Fact]
         public void AskQuestionUnknownCategoryTest()
         {
             var deck = new QuestionDeck();
-            deck.FillQuestions();
 
             var ex = Record.Exception(() => deck.AskQuestionCategory("Unknown"));
             Assert.IsType<InvalidOperationException>(ex);
