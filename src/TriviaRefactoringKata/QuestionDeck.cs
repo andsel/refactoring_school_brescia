@@ -82,7 +82,7 @@ namespace Trivia
                 rockQuestions.RemoveFirst();
                 return question;
             }
-            return null;
+            throw new InvalidOperationException($"Missing category {category}");
         }
     }
 }

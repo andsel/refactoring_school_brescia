@@ -61,11 +61,23 @@ namespace Trivia
         }
 
         [Fact]
-        public void AskQuestionUnknownCategoryTest()
+        public void AskQuestionUnknownCategoryTest_test()
         {
             var deck = new QuestionDeck();
             deck.FillQuestions();
             Assert.Null(deck.AskQuestionCategory("Unknown"));
         }
+
+        [Fact]
+        public void AskQuestionUnknownCategoryTest()
+        {
+            var deck = new QuestionDeck();
+            deck.FillQuestions();
+
+            var ex = Record.Exception(() => deck.AskQuestionCategory("Unknown"));
+            Assert.IsType<InvalidOperationException>(ex);
+            Assert.Contains("Missing category", ex.Message, StringComparison.InvariantCultureIgnoreCase);
+        }
+    }
     }
 }
