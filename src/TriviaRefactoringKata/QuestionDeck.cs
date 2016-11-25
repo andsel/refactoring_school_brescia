@@ -49,7 +49,7 @@ namespace Trivia
             if (currentPlayerPlace == 3) return "Sports";
             if (currentPlayerPlace == 7) return "Sports";
             if (currentPlayerPlace == 11) return "Sports";
-            return "Rock";
+            throw new InvalidOperationException("out of board");
         }
 
         public String AskQuestionCategory(String category)

@@ -27,14 +27,15 @@ namespace Trivia
         }
 
         [Theory]
-        [InlineData(-1, "Rock")]
-        [InlineData(12, "Rock")]
-        [InlineData(1234, "Rock")]
-        public void OutOfBoardTest(int currentPlayerPlace, String expected)
+        [InlineData(-1)]
+        [InlineData(12)]
+        [InlineData(1234)]
+        public void OutOfBoardTest(int place)
         {
             var deck = new QuestionDeck();
-            var category = deck.CurrentCategoryPlace(currentPlayerPlace);
-            Assert.Equal(expected, category);
+            var ex = Record.Exception(() => deck.CurrentCategoryPlace(place));
+            Assert.IsType<InvalidOperationException>(ex);
+            Assert.Contains("out of board", ex.Message, StringComparison.InvariantCultureIgnoreCase);
         }
 
         [Theory]
