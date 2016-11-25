@@ -7,17 +7,16 @@ namespace Trivia
 {
     public class QuestionDeck
     {
-        private readonly Category pop;
-        private Category science;
-        private Category sports;
-        private Category rock;
+        
+        private readonly List<Category> categories;
 
         public QuestionDeck()
         {
-            pop = new Category("Pop", new[] { 0, 4, 6 });
-            science = new Category("Science", new[] { 1, 5, 9 });
-            sports = new Category("Sports", new[] { 2, 6, 10 });
-            rock = new Category("Rock", new[] { 3, 7, 11 });
+            Category pop = new Category("Pop", new[] { 0, 4, 6 });
+            Category science = new Category("Science", new[] { 1, 5, 9 });
+            Category sports = new Category("Sports", new[] { 2, 6, 10 });
+            Category rock = new Category("Rock", new[] { 3, 7, 11 });
+            categories = new List<Category> {pop, science, sports, rock};
         }
 
         String CreateQuestion(String category, int index)
@@ -29,31 +28,27 @@ namespace Trivia
         {
             for (int i = 0; i < 50; i++)
             {
-                pop.AddQuestion(CreateQuestion(pop.Name, i));
-                science.AddQuestion(CreateQuestion(science.Name, i));
-                sports.AddQuestion(CreateQuestion(sports.Name, i));
-                rock.AddQuestion(CreateQuestion(rock.Name, i));
+                foreach (var catergory in categories)
+                {
+                    catergory.AddQuestion(CreateQuestion(catergory.Name, i));
+                }
             }
         }
 
         public String CategoryForPlace(int playerPlace)
         {
-            if (pop.Contains(playerPlace)) return pop.Name;
-            if (science.Contains(playerPlace)) return science.Name;
-            if (sports.Contains(playerPlace)) return sports.Name;
-            if (rock.Contains(playerPlace)) return rock.Name;
-
-            throw new InvalidOperationException("out of board");
+            var found = categories.SingleOrDefault(x => x.Contains(playerPlace));
+            if (found == null)
+                throw new InvalidOperationException("out of board");
+            return found.Name;
         }
 
         public String AskQuestionCategory(String category)
         {
-            if (pop.Name == category) return pop.NextQuestion();
-            if (science.Name == category) return science.NextQuestion();
-            if (sports.Name == category) return sports.NextQuestion();
-            if (rock.Name == category) return rock.NextQuestion();
-
-            throw new InvalidOperationException($"Missing category {category}");
+            var found = categories.SingleOrDefault(x => x.Name == category);
+            if (found == null)
+                throw new InvalidOperationException($"Missing category {category}");
+            return found.Name;
         }
     }
 }
