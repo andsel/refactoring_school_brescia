@@ -15,42 +15,9 @@ namespace Trivia
             categories = new List<Category>();
         }
 
-        String CreateQuestion(String category, int index)
-        {
-            return category + " Question " + index;
-        }
-
-        public void FillQuestions()
-        {
-            Category pop = new Category("Pop");
-            pop.PlaceOn(new[] { 0, 4, 6 });
-            categories.Add(pop);
-
-            Category science = new Category("Science");
-            science.PlaceOn(new[] { 1, 5, 9 });
-            categories.Add(science);
-
-            Category sports = new Category("Sports");
-            sports.PlaceOn(new[] { 2, 6, 10 });
-            categories.Add(sports);
-
-            Category rock = new Category("Rock");
-            rock.PlaceOn(new[] { 3, 7, 11 });
-            categories.Add(rock);
-
-            for (int i = 0; i < 50; i++)
-            {
-                foreach (var category in categories)
-                {
-                    category.AddQuestion(CreateQuestion(category.Name, i));
-                }
-            }
-        }
-
         public void PlaceOn(String categoryName, int[] place)
         {
-            var cat = GetOrAdd(categoryName);
-            cat.PlaceOn(place);
+            GetOrAdd(categoryName).PlaceOn(place);
         }
 
         public void AddQuestion(String categoryName, String question)

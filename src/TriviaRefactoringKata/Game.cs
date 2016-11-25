@@ -24,7 +24,22 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
-            questionDeck.FillQuestions();
+            FillGame();
+        }
+
+        private void FillGame()
+        {
+            questionDeck.PlaceOn("Pop", new[] { 0, 4, 8 });
+            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Pop", "Pop" + " Question " + i);
+
+            questionDeck.PlaceOn("History", new[] { 1, 5, 9 });
+            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("History", "History" + " Question " + i);
+
+            questionDeck.PlaceOn("Sports", new[] { 2, 6, 10 });
+            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Sports", "Sports" + " Question " + i);
+
+            questionDeck.PlaceOn("Rock", new[] { 3, 7, 11 });
+            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Rock", "Rock" + " Question " + i);
         }
 
         public bool isPlayable()

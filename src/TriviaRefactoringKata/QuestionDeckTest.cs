@@ -10,7 +10,6 @@ namespace Trivia
         public void IsCategoryOnPlace()
         {
             var deck = new QuestionDeck();
-            deck.FillQuestions();
             deck.PlaceOn("Foo", new int[] {0, 1});
             Assert.Equal("Foo", deck.CategoryForPlace(0));
             Assert.Equal("Foo", deck.CategoryForPlace(1));
@@ -33,7 +32,6 @@ namespace Trivia
         public void FirstQuestion_(String category)
         {
             var deck = new QuestionDeck();
-            deck.FillQuestions();
             var question = deck.AskQuestionCategory(category);
             Assert.Equal(category + "Question 0", question);
         }
@@ -54,7 +52,6 @@ namespace Trivia
         {
             var category = "Rock";
             var deck = new QuestionDeck();
-            deck.FillQuestions();
             Assert.Equal(category + "Question 0", deck.AskQuestionCategory(category));
             Assert.Equal(category + "Question 1", deck.AskQuestionCategory(category));
             Assert.Equal(category + "Question 2", deck.AskQuestionCategory(category));
