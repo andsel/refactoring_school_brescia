@@ -49,16 +49,27 @@ namespace Trivia
 
         public void PlaceOn(String categoryName, int[] place)
         {
-            var cat = new Category(categoryName);
+            var cat = GetOrAdd(categoryName);
             cat.PlaceOn(place);
-            categories.Add(cat);
         }
 
         public void AddQuestion(String categoryName, String question)
         {
             var cat = new Category(categoryName);
-            cat.AddQuestion(question);
             categories.Add(cat);
+            cat.AddQuestion(question);
+        }
+
+        private Category GetOrAdd(String categoryName)
+        {
+            var found = categories.SingleOrDefault(x => x.Name == categoryName);
+            if (found != null)
+            {
+                return found;
+            }
+            var cat = new Category(categoryName);
+            categories.Add(cat);
+            return cat;
         }
 
         public String CategoryForPlace(int playerPlace)
