@@ -21,6 +21,10 @@ namespace Trivia
         internal static void Run(Random rand)
         {
             Game aGame = new Game();
+            AddFiftyQuestions(aGame, "Pop", new[] { 0, 4, 8 });
+            AddFiftyQuestions(aGame, "History", new[] { 1, 5, 9 });
+            AddFiftyQuestions(aGame, "Sports", new[] { 2, 6, 10 });
+            AddFiftyQuestions(aGame, "Rock", new[] { 3, 7, 11 });
 
             aGame.add("Chet");
             aGame.add("Pat");
@@ -40,6 +44,14 @@ namespace Trivia
                     notAWinner = aGame.wasCorrectlyAnswered();
                 }
             } while (notAWinner);
+        }
+
+
+        static void AddFiftyQuestions(Game game, String categoryName, int[] categoryPlaces)
+        {
+            game.PlaceCategory(categoryName, categoryPlaces);
+            for (int i = 0; i < 50; i++)
+                game.AddCategoryQuestion(categoryName, categoryName + " Question " + i);
         }
     }
 

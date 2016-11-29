@@ -24,22 +24,16 @@ namespace UglyTrivia
         public Game()
         {
             questionDeck = new QuestionDeck();
-            FillGame();
         }
 
-        private void FillGame()
+        public void AddCategoryQuestion(String categoryName, String question)
         {
-            questionDeck.PlaceOn("Pop", new[] { 0, 4, 8 });
-            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Pop", "Pop" + " Question " + i);
+            questionDeck.AddQuestion(categoryName, question);
+        }
 
-            questionDeck.PlaceOn("History", new[] { 1, 5, 9 });
-            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("History", "History" + " Question " + i);
-
-            questionDeck.PlaceOn("Sports", new[] { 2, 6, 10 });
-            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Sports", "Sports" + " Question " + i);
-
-            questionDeck.PlaceOn("Rock", new[] { 3, 7, 11 });
-            for (int i = 0; i < 50; i++) questionDeck.AddQuestion("Rock", "Rock" + " Question " + i);
+        public void PlaceCategory(string categoryName, int[] categoryPlaces)
+        {
+            questionDeck.PlaceOn(categoryName, categoryPlaces);
         }
 
         public bool isPlayable()
